@@ -3,6 +3,7 @@
 \usepackage{listings}
 \usepackage{amsmath}
 \usepackage{booktabs}
+\usepackage{float}
 \usepackage[a4paper,centering,top=3cm,left=2.6cm]{geometry}
 
 \pagestyle{plain}
@@ -79,10 +80,10 @@
 
 \subsubsection{测量方法}
 
-Ngspice 与 Multisim 的核心都是 SPICE 引擎。
-%与 Multisim 不同的是，Ngspice 是一款自由软件。
-%为远离高昂的授权费用或获取免费教育版的周折，
-本文使用自由软件 Ngspice 进行电路仿真。
+Ngspice 与 Multisim 的核心都是基于使用带 XSPICE 扩展的伯克利 SPICE 的强大的工业标准 SPICE 引擎。
+与 Multisim 不同的是，Ngspice 是一款自由软件。
+为远离高昂的授权费用或获取免费教育版的周折，
+本文使用 Ngspice 进行计算机辅助分析。
 
 在 Ngspice 中，电路是通过一种名为 \verb|netlist| 的文本文件描述的。
 
@@ -140,7 +141,7 @@ $ ngspice
 \subsection{实验内容}
 
 运行 Ngspice 并载入电路文件、模拟仿真后，记录相关数据于表 \ref{tab:expdata} 中。
-\begin{table}[htb]
+\begin{table}[H]
 \centering
 \begin{tabular}{ccccccc}
 \toprule
@@ -154,7 +155,7 @@ $U_{S2}$ 单独作用 & $-0.23$ & $0.15$ & $-0.38$ & $-0.46$ & $0.46$ & $-1.54$ 
 \caption{仿真实验数据}\label{tab:expdata}
 \end{table}
 
-\clearpage
+%\clearpage
 
 \subsection{数据分析与结论}
 
