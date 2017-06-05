@@ -2,8 +2,10 @@
 \usepackage{subfig}
 \usepackage{listings}
 \usepackage{amsmath}
+\usepackage{booktabs}
 \usepackage[a4paper,centering,top=3cm,left=2.6cm]{geometry}
-\pagestyle{empty}
+
+\pagestyle{plain}
 \ctexset {
     section = {
         name = {},
@@ -22,12 +24,15 @@
 }
 \newcommand\unitV{\:\mathrm{V}}
 \newcommand\unitOhm{\:\Omega}
+\newcommand\pureunitA{\mathrm{A}}
+\newcommand\pureunitV{\mathrm{V}}
 \begin{document}
 
 \title{电子技术基础实验报告}
 \author{微电子与固体电子学院\ \ 傅宣登 (2016030102010)}
 
 \maketitle
+%\thispagestyle{empty}
 
 \section{实验名称：叠加定理的验证}
 
@@ -53,26 +58,31 @@
 \begin{figure}[htbp]
 \centering
 \subfloat[]{\label{circuits-sub-a}
-\begin{minipage}{0.25\textwidth}
+\begin{minipage}{0.29\textwidth}
     \centering
     \includegraphics[width=\textwidth]{complete.pdf}
 \end{minipage}}
 \qquad
 \subfloat[]{\label{circuits-sub-b}
-\begin{minipage}{0.25\textwidth}
+\begin{minipage}{0.29\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{complete.pdf}
+    \includegraphics[width=\textwidth]{vs1.pdf}
 \end{minipage}}
 \qquad
 \subfloat[]{\label{circuits-sub-c}
-\begin{minipage}{0.25\textwidth}
+\begin{minipage}{0.29\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{complete.pdf}
+    \includegraphics[width=\textwidth]{vs2.pdf}
 \end{minipage}}
 \caption{叠加定理原理图}\label{circuits}
 \end{figure}
 
 \subsubsection{测量方法}
+
+Ngspice 与 Multisim 的核心都是 SPICE 引擎。
+%与 Multisim 不同的是，Ngspice 是一款自由软件。
+%为远离高昂的授权费用或获取免费教育版的周折，
+本文使用自由软件 Ngspice 进行电路仿真。
 
 在 Ngspice 中，电路是通过一种名为 \verb|netlist| 的文本文件描述的。
 
@@ -129,10 +139,26 @@ $ ngspice
 
 \subsection{实验内容}
 
-内容。
+运行 Ngspice 并载入电路文件、模拟仿真后，记录相关数据于表 \ref{tab:expdata} 中。
+\begin{table}[htb]
+\centering
+\begin{tabular}{ccccccc}
+\toprule
+参数 & $I_{R1}/\pureunitA$ & $I_{R2}/\pureunitA$ & $I_{R3}/\pureunitA$ & $U_{R1}/\pureunitV$ & $U_{R2}/\pureunitV$ & $U_{R3}/\pureunitV$ \\
+\midrule
+$U_{S1}$ 单独作用 & $1.35$ & $0.77$ & $0.58$ & $2.69$ & $2.31$ & $2.31$ \\
+$U_{S2}$ 单独作用 & $-0.23$ & $0.15$ & $-0.38$ & $-0.46$ & $0.46$ & $-1.54$ \\
+共同作用时的测量值 & $1.12$ & $0.92$ & $0.19$ & $2.23$ & $2.77$ & $0.77$ \\
+\bottomrule
+\end{tabular}
+\caption{仿真实验数据}\label{tab:expdata}
+\end{table}
+
+\clearpage
 
 \subsection{数据分析与结论}
 
-分析结论。
+分析上表数据可知，在误差范围内，
+线性电路中各支路电流、电压等于 $U_{S1}$ 与 $U_{S2}$ 单独作用产生的电流、电压的代数和。叠加定理是正确的。
 
 \end{document}
